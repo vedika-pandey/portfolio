@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vedika Pandey — ESG Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0f0e0d;
+  --ink2:#4a4845;
+  --ink3:#8c8a85;
+  --ink4:#b8b5ae;
+  --paper:#f7f5f0;
+  --paper2:#efede6;
+  --paper3:#e6e3da;
+  --white:#ffffff;
+  --rule:rgba(15,14,13,0.12);
+  --rule2:rgba(15,14,13,0.06);
+  --t1:#0a5c47;--t1l:#dff2eb;--t1m:#1d9e75;
+  --t2:#2e2878;--t2l:#eceafc;--t2m:#5248c4;
+  --t3:#6b2410;--t3l:#faeae4;--t3m:#c44a22;
+  --t4:#5a3200;--t4l:#fdf0dc;--t4m:#b06a10;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth;font-size:16px;scroll-padding-top:72px}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,245,240,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-name{font-family:var(--serif);font-size:15px;font-weight:500;letter-spacing:-0.01em}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:12px;font-weight:500;color:var(--ink3);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{font-size:12px;font-weight:500;color:var(--t1);border:1px solid var(--t1);padding:7px 16px;border-radius:2px;text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:all 0.2s}
+.nav-cta:hover{background:var(--t1);color:var(--white)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+
+/* ── SECTION SHELL ── */
+section{padding:96px 48px;max-width:1200px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--ink3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:40px;display:flex;align-items:center;gap:12px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+.section-rule{width:100%;height:1px;background:var(--rule);margin:64px 0}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;max-width:none;border-bottom:1px solid var(--rule)}
+.hero-left{padding:140px 64px 80px 64px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--rule)}
+.hero-right{padding:140px 48px 80px 64px;background:var(--paper2);display:flex;flex-direction:column;justify-content:space-between}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:32px}
+.hero-name{font-family:var(--serif);font-size:clamp(56px,7vw,88px);font-weight:400;line-height:1.0;letter-spacing:-0.03em;color:var(--ink)}
+.hero-accent{width:40px;height:3px;background:var(--t1m);margin:32px 0}
+.hero-statement{font-family:var(--serif);font-size:clamp(16px,1.6vw,20px);font-weight:400;font-style:italic;line-height:1.55;color:var(--ink2);max-width:420px}
+.hero-meta{font-size:12px;color:var(--ink3);line-height:2.2}
+.hero-meta span{display:block}
+.hero-pillar-list{padding:0;list-style:none}
+.hero-pillar-list li{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--rule);font-size:14px;color:var(--ink)}
+.hero-pillar-list li:first-child{border-top:1px solid var(--rule)}
+.pillar-num{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.08em}
+.hero-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:40px}
+.hero-grid-cell{height:32px;border-radius:2px}
+
+/* ── ABOUT ── */
+#about .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-statement h2{font-family:var(--serif);font-size:clamp(28px,3vw,40px);font-weight:400;line-height:1.25;letter-spacing:-0.02em;margin-bottom:28px}
+.about-body{font-size:15px;color:var(--ink2);line-height:1.75;margin-bottom:16px}
+.about-right-label{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px}
+.cap-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule2)}
+.cap-name{font-size:13px;color:var(--ink)}
+.cap-dots{display:flex;gap:4px}
+.cap-dot{width:7px;height:7px;border-radius:1px}
+.sector-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:32px}
+.stag{font-size:11px;padding:5px 12px;border:1px solid var(--rule);color:var(--ink2);border-radius:2px;letter-spacing:0.02em}
+
+/* ── PILLARS ── */
+#pillars .pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule);border-radius:2px;overflow:hidden}
+.pillar-col{padding:36px 28px;border-right:1px solid var(--rule);position:relative}
+.pillar-col:last-child{border-right:none}
+.p-accent-bar{height:3px;width:100%;margin-bottom:28px}
+.p-num{font-family:var(--mono);font-size:32px;font-weight:500;letter-spacing:-0.04em;margin-bottom:6px;line-height:1}
+.p-title{font-family:var(--serif);font-size:17px;font-weight:500;line-height:1.25;margin-bottom:20px;letter-spacing:-0.01em}
+.p-divider{height:1px;background:var(--rule);margin-bottom:16px}
+.p-bullets{list-style:none;margin-bottom:20px}
+.p-bullets li{font-size:12px;color:var(--ink2);padding:5px 0;border-bottom:1px solid var(--rule2);line-height:1.4}
+.p-bullets li:last-child{border-bottom:none}
+.p-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.p-tag{font-size:10px;padding:3px 8px;border-radius:2px;font-family:var(--mono);letter-spacing:0.03em}
+
+/* ── PROCESS ── */
+#process .process-intro{font-family:var(--serif);font-size:clamp(22px,2.5vw,32px);font-weight:400;font-style:italic;line-height:1.4;max-width:640px;margin-bottom:56px;letter-spacing:-0.01em}
+.process-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule);border-radius:2px;overflow:hidden;margin-bottom:48px}
+.process-step{padding:32px 24px;border-right:1px solid var(--rule);position:relative}
+.process-step:last-child{border-right:none}
+.ps-bar{height:2px;width:100%;margin-bottom:24px}
+.ps-num{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:0.1em;margin-bottom:8px}
+.ps-title{font-family:var(--serif);font-size:18px;font-weight:500;margin-bottom:14px;letter-spacing:-0.01em}
+.ps-body{font-size:12px;color:var(--ink2);line-height:1.65;margin-bottom:16px}
+.ps-output-label{font-family:var(--mono);font-size:9px;color:var(--ink3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px}
+.ps-output{font-size:11px;color:var(--ink3);font-style:italic;line-height:1.4}
+.principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-top:32px;border-top:1px solid var(--rule)}
+.principle{padding-left:16px;border-left:2px solid var(--rule)}
+.principle-title{font-size:13px;font-weight:500;margin-bottom:6px}
+.principle-body{font-size:12px;color:var(--ink2);line-height:1.6}
+
+/* ── WORK OVERVIEW ── */
+#work .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.work-card{background:var(--paper);padding:32px 28px;cursor:pointer;transition:background 0.2s,box-shadow 0.2s;position:relative;overflow:hidden;display:block;text-decoration:none;color:inherit}
+.work-card:hover{background:var(--white)}
+.work-card:hover .wc-arrow{opacity:1;transform:translate(0,0)}
+.wc-arrow{position:absolute;bottom:20px;right:24px;font-size:11px;font-weight:500;color:var(--ink3);opacity:0;transform:translate(-6px,0);transition:opacity 0.2s,transform 0.2s;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--mono)}
+.wc-bar{height:2px;width:100%;margin-bottom:20px}
+.wc-num{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:0.1em;margin-bottom:6px}
+.wc-sector{font-size:11px;color:var(--ink3);margin-bottom:12px;letter-spacing:0.02em}
+.wc-title{font-family:var(--serif);font-size:16px;font-weight:500;line-height:1.3;margin-bottom:16px;letter-spacing:-0.01em}
+.wc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}
+.wc-tag{font-size:10px;padding:3px 8px;border-radius:2px;font-family:var(--mono)}
+.wc-client{font-size:11px;color:var(--ink3);font-style:italic;border-top:1px solid var(--rule2);padding-top:12px}
+
+/* ── CASE STUDY ── */
+.cs-section{padding:96px 48px;max-width:1200px;margin:0 auto}
+.cs-header{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:20px;border-bottom:1px solid var(--rule);margin-bottom:40px}
+.cs-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
+.cs-headline{font-family:var(--serif);font-size:clamp(26px,3vw,42px);font-weight:400;line-height:1.2;letter-spacing:-0.02em;max-width:680px}
+.cs-date{font-size:12px;color:var(--ink3)}
+.cs-body{display:grid;grid-template-columns:1fr 300px;gap:64px;align-items:start}
+.cs-main{}
+.cs-sidebar{border-left:1px solid var(--rule);padding-left:32px}
+.cs-section-label{font-family:var(--mono);font-size:9px;color:var(--ink3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px;margin-top:28px}
+.cs-section-label:first-child{margin-top:0}
+.cs-text{font-size:14px;color:var(--ink2);line-height:1.75;margin-bottom:20px}
+.cs-callout{background:var(--t1l);border-left:3px solid var(--t1m);padding:18px 20px;margin:24px 0;border-radius:0 2px 2px 0}
+.cs-callout-label{font-family:var(--mono);font-size:9px;color:var(--t1);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+.cs-callout-text{font-size:13px;color:var(--t1);font-style:italic;line-height:1.6}
+.sb-label{font-family:var(--mono);font-size:9px;color:var(--ink3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;margin-top:24px}
+.sb-label:first-child{margin-top:0}
+.sb-item{font-size:12px;color:var(--ink2);padding:5px 0;border-bottom:1px solid var(--rule2);line-height:1.4}
+.sb-item:last-child{border-bottom:none}
+.cs-stats{display:flex;gap:0;border:1px solid var(--rule);border-radius:2px;overflow:hidden;margin:32px 0}
+.cs-stat{flex:1;padding:20px 16px;border-right:1px solid var(--rule);text-align:center}
+.cs-stat:last-child{border-right:none}
+.cs-stat-val{font-family:var(--serif);font-size:28px;font-weight:400;display:block;line-height:1}
+.cs-stat-lbl{font-size:11px;color:var(--ink3);display:block;margin-top:5px;line-height:1.3}
+.phase-steps{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);border-radius:2px;overflow:hidden;margin:20px 0}
+.phase-step{display:flex;gap:0;border-bottom:1px solid var(--rule)}
+.phase-step:last-child{border-bottom:none}
+.phase-num-box{width:48px;min-width:48px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:500}
+.phase-content{padding:14px 16px;flex:1}
+.phase-name{font-size:13px;font-weight:500;margin-bottom:3px}
+.phase-desc{font-size:12px;color:var(--ink2);line-height:1.5}
+.phase-output{font-size:11px;color:var(--ink3);margin-top:4px;font-style:italic}
+.evidence-list{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.ev-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink2)}
+.ev-icon{width:20px;height:20px;border:1px solid var(--rule);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--ink3);flex-shrink:0}
+
+/* ── SVG DIAGRAMS ── */
+.diagram-wrap{margin:32px 0;border:1px solid var(--rule);border-radius:2px;overflow:hidden;background:var(--white)}
+.diagram-header{padding:12px 20px;border-bottom:1px solid var(--rule);background:var(--paper2);display:flex;justify-content:space-between;align-items:center}
+.diagram-title{font-family:var(--mono);font-size:10px;color:var(--ink2);letter-spacing:0.08em;text-transform:uppercase}
+.diagram-body{padding:24px}
+
+/* ── MATRIX ── */
+#matrix .matrix-table{width:100%;border-collapse:collapse;border:1px solid var(--rule)}
+.matrix-table th{font-family:var(--mono);font-size:9px;color:var(--ink3);letter-spacing:0.1em;text-transform:uppercase;padding:10px 12px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);text-align:center;background:var(--paper2);font-weight:500}
+.matrix-table th:first-child{text-align:left}
+.matrix-table td{padding:10px 12px;border-bottom:1px solid var(--rule2);border-right:1px solid var(--rule2);vertical-align:middle}
+.matrix-table td:first-child{font-size:12px;font-weight:500;background:var(--paper2);border-right:1px solid var(--rule);white-space:nowrap}
+.matrix-table tr:last-child td{border-bottom:none}
+.dot-row{display:flex;gap:4px;justify-content:center}
+.mdot{width:8px;height:8px;border-radius:1px}
+
+/* ── CAREER ARC ── */
+#career .arc-intro{font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);font-weight:400;font-style:italic;line-height:1.4;max-width:600px;margin-bottom:48px;letter-spacing:-0.01em}
+.timeline{position:relative;padding:32px 0}
+.timeline-spine{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--rule);transform:translateX(-50%)}
+.tl-item{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;margin-bottom:32px;align-items:center}
+.tl-left{text-align:right;padding-right:32px}
+.tl-right{padding-left:32px}
+.tl-center{display:flex;flex-direction:column;align-items:center;gap:4px}
+.tl-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--white);box-shadow:0 0 0 1px var(--ink2)}
+.tl-year{font-family:var(--mono);font-size:9px;color:var(--ink3);letter-spacing:0.08em}
+.tl-org{font-size:13px;font-weight:500;margin-bottom:3px}
+.tl-role{font-size:11px;color:var(--ink3);margin-bottom:6px}
+.tl-desc{font-size:12px;color:var(--ink2);line-height:1.5}
+.tl-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;justify-content:flex-end}
+.tl-tags-right{justify-content:flex-start}
+.tl-tag{font-size:10px;padding:2px 7px;border-radius:2px;font-family:var(--mono)}
+.cap-tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;padding-top:40px;border-top:1px solid var(--rule)}
+.cap-track{padding-left:16px}
+.ct-line{height:2px;width:32px;margin-bottom:12px;border-radius:1px}
+.ct-title{font-size:13px;font-weight:500;margin-bottom:6px}
+.ct-body{font-size:12px;color:var(--ink2);line-height:1.6}
+
+/* ── CLOSING ── */
+#closing{background:var(--ink);padding:96px 48px;max-width:none;border-top:none}
+.closing-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.closing-left h2{font-family:var(--serif);font-size:clamp(32px,4vw,56px);font-weight:400;color:var(--white);line-height:1.1;letter-spacing:-0.03em;margin-bottom:24px}
+.closing-accent{width:32px;height:3px;background:var(--t1m);margin-bottom:28px}
+.closing-body{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:40px}
+.contact-row{display:flex;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1)}
+.cr-label{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase;min-width:72px}
+.cr-val{font-size:13px;color:rgba(255,255,255,0.75)}
+.closing-right h3{font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:24px;font-weight:400}
+.eng-types{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08)}
+.et{padding:24px 20px;background:var(--ink)}
+.et-bar{height:2px;width:100%;margin-bottom:14px}
+.et-name{font-size:13px;font-weight:500;color:var(--white);margin-bottom:6px}
+.et-desc{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5}
+.closing-footer{max-width:1200px;margin:48px auto 0;padding-top:32px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center}
+.cf-copy{font-size:11px;color:rgba(255,255,255,0.25)}
+
+/* ── FULL-WIDTH SECTIONS ── */
+.fw-section{border-top:1px solid var(--rule)}
+.fw-section+.fw-section{border-top:1px solid var(--rule)}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--paper)}
+::-webkit-scrollbar-thumb{background:var(--ink3);border-radius:2px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name">Vedika Pandey</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#pillars">Expertise</a>
+    <a href="#work">Work</a>
+    <a href="#matrix">Frameworks</a>
+    <a href="#career">Arc</a>
+  </div>
+  <a href="#closing" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-eyebrow reveal">ESG · Climate · Consulting · Paris</div>
+      <h1 class="hero-name reveal reveal-delay-1">Vedika<br>Pandey</h1>
+      <div class="hero-accent reveal reveal-delay-2"></div>
+      <p class="hero-statement reveal reveal-delay-2">"I build the systems that turn sustainability obligations into decision-useful intelligence."</p>
+    </div>
+    <div class="hero-meta reveal reveal-delay-3">
+      <span>Paris, France</span>
+      <span>4+ years · Global operations</span>
+      <span>English · French · Hindi · Marathi</span>
+      <span>vedika.pandey@edhec.com</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div>
+      <div class="hero-eyebrow reveal" style="margin-bottom:24px;">Expertise pillars</div>
+      <ul class="hero-pillar-list reveal reveal-delay-1">
+        <li><span>Regulatory translation</span><span class="pillar-num" style="color:var(--t1m)">01</span></li>
+        <li><span>GHG &amp; value chain architecture</span><span class="pillar-num" style="color:var(--t2m)">02</span></li>
+        <li><span>ESG data governance</span><span class="pillar-num" style="color:var(--t3m)">03</span></li>
+        <li><span>Investor-grade ESG intelligence</span><span class="pillar-num" style="color:var(--t4m)">04</span></li>
+      </ul>
+    </div>
+    <div class="hero-grid reveal reveal-delay-2">
+      <div class="hero-grid-cell" style="background:var(--t1l)"></div>
+      <div class="hero-grid-cell" style="background:var(--t2l)"></div>
+      <div class="hero-grid-cell" style="background:var(--paper3)"></div>
+      <div class="hero-grid-cell" style="background:var(--t1l)"></div>
+      <div class="hero-grid-cell" style="background:var(--paper3)"></div>
+      <div class="hero-grid-cell" style="background:var(--t4l)"></div>
+      <div class="hero-grid-cell" style="background:var(--t3l)"></div>
+      <div class="hero-grid-cell" style="background:var(--paper3)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="fw-section">
+<section id="about">
+  <div class="section-label reveal">About &amp; positioning</div>
+  <div class="about-grid">
+    <div class="about-statement reveal">
+      <h2>Climate and ESG consultant specialising in implementation, not just strategy.</h2>
+      <p class="about-body">Four years working at the intersection of regulatory compliance, emissions accounting, and ESG data infrastructure. I've built CSRD reporting systems from scratch, coordinated Scope 3 data across 50+ supplier networks, and produced ESG analysis that directly shaped investment decisions at a major European asset manager.</p>
+      <p class="about-body">The work I find most valuable is at the boundary between what regulations require and what organisations can actually produce — where the gap between intent and infrastructure is largest.</p>
+      <p class="about-body">I work with consultancies, asset managers, corporates, and PE firms across Europe — in French and English — bringing both technical depth and strategic judgment to ESG implementation.</p>
+      <div class="sector-tags">
+        <span class="stag">Maritime &amp; global ops</span>
+        <span class="stag">Asset management</span>
+        <span class="stag">Agri-food &amp; FMCG</span>
+        <span class="stag">Insurance</span>
+        <span class="stag">ESG software</span>
+        <span class="stag">Private equity</span>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="about-right-label">Capability depth</div>
+      <div class="cap-row"><span class="cap-name">CSRD / ESRS implementation</span><div class="cap-dots"><div class="cap-dot" style="background:var(--t1m)"></div><div class="cap-dot" style="background:var(--t1m)"></div><div class="cap-dot" style="background:var(--t1m)"></div><div class="cap-dot" style="background:var(--t1m)"></div><div class="cap-dot" style="background:var(--t1m)"></div></div></div>
+      <div class="cap-row"><span class="cap-name">Scope 1–3 GHG accounting</span><div class="cap-dots"><div class="cap-dot" style="background:var(--t1m)"></div><div class="cap-dot" style="background:var(--t1m)"></div><div class="cap-dot" style="background:var(--t1m)"></div><div class="cap-dot" style="background:var(--t1m)"></div><div class="cap-dot" style="background:var(--t1m)"></div></div></div>
+      <div class="cap-row"><span class="cap-name">Double materiality assessment</span><div class="cap-dots"><div class="cap-dot" style="background:var(--t2m)"></div><div class="cap-dot" style="background:var(--t2m)"></div><div class="cap-dot" style="background:var(--t2m)"></div><div class="cap-dot" style="background:var(--t2m)"></div><div class="cap-dot" style="background:var(--rule)"></div></div></div>
+      <div class="cap-row"><span class="cap-name">ESG data architecture &amp; KPI design</span><div class="cap-dots"><div class="cap-dot" style="background:var(--t2m)"></div><div class="cap-dot" style="background:var(--t2m)"></div><div class="cap-dot" style="background:var(--t2m)"></div><div class="cap-dot" style="background:var(--t2m)"></div><div class="cap-dot" style="background:var(--t2m)"></div></div></div>
+      <div class="cap-row"><span class="cap-name">Investor ESG analysis (SFDR)</span><div class="cap-dots"><div class="cap-dot" style="background:var(--t3m)"></div><div class="cap-dot" style="background:var(--t3m)"></div><div class="cap-dot" style="background:var(--t3m)"></div><div class="cap-dot" style="background:var(--t3m)"></div><div class="cap-dot" style="background:var(--rule)"></div></div></div>
+      <div class="cap-row"><span class="cap-name">Supply chain risk (TNFD / CSDDD)</span><div class="cap-dots"><div class="cap-dot" style="background:var(--t3m)"></div><div class="cap-dot" style="background:var(--t3m)"></div><div class="cap-dot" style="background:var(--t3m)"></div><div class="cap-dot" style="background:var(--t3m)"></div><div class="cap-dot" style="background:var(--rule)"></div></div></div>
+      <div class="cap-row"><span class="cap-name">Stakeholder &amp; supplier engagement</span><div class="cap-dots"><div class="cap-dot" style="background:var(--t4m)"></div><div class="cap-dot" style="background:var(--t4m)"></div><div class="cap-dot" style="background:var(--t4m)"></div><div class="cap-dot" style="background:var(--t4m)"></div><div class="cap-dot" style="background:var(--t4m)"></div></div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- EXPERTISE PILLARS -->
+<div class="fw-section">
+<section id="pillars">
+  <div class="section-label reveal">Expertise pillars</div>
+  <div class="pillar-grid reveal">
+    <div class="pillar-col">
+      <div class="p-accent-bar" style="background:var(--t1m)"></div>
+      <div class="p-num" style="color:var(--t1l)">01</div>
+      <h3 class="p-title">Regulatory<br>translation</h3>
+      <div class="p-divider"></div>
+      <ul class="p-bullets">
+        <li>CSRD/ESRS implementation end-to-end</li>
+        <li>Gap analysis &amp; compliance roadmaps</li>
+        <li>ESRS data point → KPI architecture</li>
+        <li>Audit-ready disclosure design</li>
+        <li>Multi-jurisdiction regulatory mapping</li>
+      </ul>
+      <div class="p-tags">
+        <span class="p-tag" style="background:var(--t1l);color:var(--t1)">First-time reporters</span>
+        <span class="p-tag" style="background:var(--t1l);color:var(--t1)">EU market entrants</span>
+        <span class="p-tag" style="background:var(--t1l);color:var(--t1)">PE portfolio cos</span>
+      </div>
+    </div>
+    <div class="pillar-col">
+      <div class="p-accent-bar" style="background:var(--t2m)"></div>
+      <div class="p-num" style="color:var(--t2l)">02</div>
+      <h3 class="p-title">GHG &amp; value chain<br>architecture</h3>
+      <div class="p-divider"></div>
+      <ul class="p-bullets">
+        <li>Scope 1–3 accounting system design</li>
+        <li>Activity-based &amp; emission factor methods</li>
+        <li>Supplier data coordination at scale</li>
+        <li>Hybrid estimation methodology</li>
+        <li>LCA-informed carbon analysis</li>
+      </ul>
+      <div class="p-tags">
+        <span class="p-tag" style="background:var(--t2l);color:var(--t2)">Multinationals</span>
+        <span class="p-tag" style="background:var(--t2l);color:var(--t2)">Carbon software</span>
+        <span class="p-tag" style="background:var(--t2l);color:var(--t2)">Agri-food / FMCG</span>
+      </div>
+    </div>
+    <div class="pillar-col">
+      <div class="p-accent-bar" style="background:var(--t3m)"></div>
+      <div class="p-num" style="color:var(--t3l)">03</div>
+      <h3 class="p-title">ESG data<br>governance</h3>
+      <div class="p-divider"></div>
+      <ul class="p-bullets">
+        <li>80+ KPI framework design</li>
+        <li>Audit trail &amp; evidence architecture</li>
+        <li>ESRS data point mapping</li>
+        <li>Version-controlled reporting systems</li>
+        <li>Assurance-readiness from day one</li>
+      </ul>
+      <div class="p-tags">
+        <span class="p-tag" style="background:var(--t3l);color:var(--t3)">Big 4 assurance</span>
+        <span class="p-tag" style="background:var(--t3l);color:var(--t3)">ESG platforms</span>
+        <span class="p-tag" style="background:var(--t3l);color:var(--t3)">Large corporates</span>
+      </div>
+    </div>
+    <div class="pillar-col">
+      <div class="p-accent-bar" style="background:var(--t4m)"></div>
+      <div class="p-num" style="color:var(--t4l)">04</div>
+      <h3 class="p-title">Investor-grade<br>ESG intelligence</h3>
+      <div class="p-divider"></div>
+      <ul class="p-bullets">
+        <li>300+ issuer controversy screening</li>
+        <li>PE ESG due diligence</li>
+        <li>SFDR-aligned portfolio analysis</li>
+        <li>Stewardship engagement facilitation</li>
+        <li>Sector ESG briefing notes</li>
+      </ul>
+      <div class="p-tags">
+        <span class="p-tag" style="background:var(--t4l);color:var(--t4)">Asset managers</span>
+        <span class="p-tag" style="background:var(--t4l);color:var(--t4)">PE firms</span>
+        <span class="p-tag" style="background:var(--t4l);color:var(--t4)">ESG data providers</span>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- PROCESS -->
+<div class="fw-section">
+<section id="process">
+  <div class="section-label reveal">How I work</div>
+  <p class="process-intro reveal">From ambiguity to audit-ready output — every engagement follows the same underlying logic, regardless of the starting point.</p>
+  <div class="process-flow reveal">
+    <div class="process-step">
+      <div class="ps-bar" style="background:var(--t1m)"></div>
+      <div class="ps-num">01 — Diagnose</div>
+      <h4 class="ps-title">Understand before designing</h4>
+      <p class="ps-body">Map the data landscape, regulatory obligations, and the gap between current state and required output. Produce a compliance readiness picture before touching any framework.</p>
+      <div class="ps-output-label">Outputs</div>
+      <div class="ps-output">Gap analysis · compliance heatmap · data audit · ESRS readiness mapping</div>
+    </div>
+    <div class="process-step">
+      <div class="ps-bar" style="background:var(--t2m)"></div>
+      <div class="ps-num">02 — Architect</div>
+      <h4 class="ps-title">Design the system, not just the report</h4>
+      <p class="ps-body">Design the KPI framework, methodology, governance, and data flows — before collection begins. The architecture determines whether the outputs survive scrutiny.</p>
+      <div class="ps-output-label">Outputs</div>
+      <div class="ps-output">KPI architecture · GHG methodology · DMA design · data governance model</div>
+    </div>
+    <div class="process-step">
+      <div class="ps-bar" style="background:var(--t3m)"></div>
+      <div class="ps-num">03 — Deliver</div>
+      <h4 class="ps-title">Execute under real constraints</h4>
+      <p class="ps-body">Run the data collection, analysis, stakeholder coordination, and reporting — under the actual data conditions that exist, not the ideal conditions assumed by the framework.</p>
+      <div class="ps-output-label">Outputs</div>
+      <div class="ps-output">Emissions model · supplier coordination · controversy screening · disclosure draft</div>
+    </div>
+    <div class="process-step">
+      <div class="ps-bar" style="background:var(--t4m)"></div>
+      <div class="ps-num">04 — Govern</div>
+      <h4 class="ps-title">Build for independence, not dependency</h4>
+      <p class="ps-body">Build the systems, documentation, and processes that make the work repeatable and organisationally owned after I leave. Dependency is a failure mode.</p>
+      <div class="ps-output-label">Outputs</div>
+      <div class="ps-output">Audit trail · evidence management · process documentation · assurance-ready packaging</div>
+    </div>
+  </div>
+  <div class="principles-grid reveal">
+    <div class="principle" style="border-left-color:var(--t1m)">
+      <div class="principle-title">Design for scrutiny</div>
+      <p class="principle-body">Every framework, model, and process is built to survive assurance — not optimised for first-year completion. Year-two problems are expensive.</p>
+    </div>
+    <div class="principle" style="border-left-color:var(--t2m)">
+      <div class="principle-title">Constrained realism</div>
+      <p class="principle-body">I design methodologies that work with imperfect data — because that is the only data that exists in practice. Perfect is the enemy of defensible.</p>
+    </div>
+    <div class="principle" style="border-left-color:var(--t3m)">
+      <div class="principle-title">Organisational handover</div>
+      <p class="principle-body">The goal is always a system the organisation can operate independently. I document everything and transfer ownership as a core deliverable, not an afterthought.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- WORK OVERVIEW -->
+<div class="fw-section">
+<section id="work">
+  <div class="section-label reveal">Selected work</div>
+  <div class="work-grid reveal">
+    <a class="work-card" href="#cs1">
+      <div class="wc-bar" style="background:var(--t1m)"></div>
+      <div class="wc-num">01</div>
+      <div class="wc-sector">Global maritime operations · CSRD compliance</div>
+      <h4 class="wc-title">End-to-end CSRD/ESRS programme for a first-time reporter across global operations</h4>
+      <div class="wc-tags">
+        <span class="wc-tag" style="background:var(--t1l);color:var(--t1)">CSRD/ESRS</span>
+        <span class="wc-tag" style="background:var(--t1l);color:var(--t1)">GHG Protocol</span>
+        <span class="wc-tag" style="background:var(--t1l);color:var(--t1)">DMA</span>
+        <span class="wc-tag" style="background:var(--t1l);color:var(--t1)">50+ suppliers</span>
+      </div>
+      <div class="wc-client">Pac Oceans Solutions · Lead consultant</div>
+      <div class="wc-arrow">Read case study →</div>
+    </a>
+    <a class="work-card" href="#cs2">
+      <div class="wc-bar" style="background:var(--t2m)"></div>
+      <div class="wc-num">02</div>
+      <div class="wc-sector">Asset management · Buy-side ESG</div>
+      <h4 class="wc-title">ESG research and controversy screening across 300+ issuers for a major European asset manager</h4>
+      <div class="wc-tags">
+        <span class="wc-tag" style="background:var(--t2l);color:var(--t2)">SFDR</span>
+        <span class="wc-tag" style="background:var(--t2l);color:var(--t2)">Stewardship</span>
+        <span class="wc-tag" style="background:var(--t2l);color:var(--t2)">300+ issuers</span>
+      </div>
+      <div class="wc-client">Amundi Asset Management</div>
+      <div class="wc-arrow">Read case study →</div>
+    </a>
+    <a class="work-card" href="#cs3">
+      <div class="wc-bar" style="background:var(--t3m)"></div>
+      <div class="wc-num">03</div>
+      <div class="wc-sector">Agri-food &amp; FMCG · PE advisory</div>
+      <h4 class="wc-title">Supply chain ESG risk and portfolio assessment under TNFD and CSDDD</h4>
+      <div class="wc-tags">
+        <span class="wc-tag" style="background:var(--t3l);color:var(--t3)">TNFD</span>
+        <span class="wc-tag" style="background:var(--t3l);color:var(--t3)">CSDDD</span>
+        <span class="wc-tag" style="background:var(--t3l);color:var(--t3)">PE due diligence</span>
+      </div>
+      <div class="wc-client">Argo Advisory · Senior consultant</div>
+      <div class="wc-arrow">Read case study →</div>
+    </a>
+    <a class="work-card" href="#matrix">
+      <div class="wc-bar" style="background:var(--t4m)"></div>
+      <div class="wc-num">04</div>
+      <div class="wc-sector">Multi-sector · ESRS architecture</div>
+      <h4 class="wc-title">ESRS requirements translated into KPI architecture and data governance for first-time reporters across 20+ EU markets</h4>
+      <div class="wc-tags">
+        <span class="wc-tag" style="background:var(--t4l);color:var(--t4)">ESRS</span>
+        <span class="wc-tag" style="background:var(--t4l);color:var(--t4)">80+ KPIs</span>
+        <span class="wc-tag" style="background:var(--t4l);color:var(--t4)">20+ markets</span>
+      </div>
+      <div class="wc-client">Independent projects</div>
+      <div class="wc-arrow">Detail on request →</div>
+    </a>
+    <a class="work-card" href="#career">
+      <div class="wc-bar" style="background:var(--t1m)"></div>
+      <div class="wc-num">05</div>
+      <div class="wc-sector">Financial services · Luxembourg</div>
+      <h4 class="wc-title">Climate risk assessments for insurance portfolios and ESG compliance roadmaps across Luxembourg, Belgium &amp; France</h4>
+      <div class="wc-tags">
+        <span class="wc-tag" style="background:var(--t1l);color:var(--t1)">TCFD</span>
+        <span class="wc-tag" style="background:var(--t1l);color:var(--t1)">Transition risk</span>
+        <span class="wc-tag" style="background:var(--t1l);color:var(--t1)">Physical risk</span>
+      </div>
+      <div class="wc-client">Bretteville Consulting</div>
+      <div class="wc-arrow">Detail on request →</div>
+    </a>
+    <a class="work-card" href="#career">
+      <div class="wc-bar" style="background:var(--t2m)"></div>
+      <div class="wc-num">06</div>
+      <div class="wc-sector">ESG software · Product</div>
+      <h4 class="wc-title">ESRS-to-CSRD compliance questionnaire design for product launch — 10+ corporate ESG policies drafted</h4>
+      <div class="wc-tags">
+        <span class="wc-tag" style="background:var(--t2l);color:var(--t2)">ESRS</span>
+        <span class="wc-tag" style="background:var(--t2l);color:var(--t2)">CSRD readiness</span>
+        <span class="wc-tag" style="background:var(--t2l);color:var(--t2)">Product design</span>
+      </div>
+      <div class="wc-client">Apiday · Paris</div>
+      <div class="wc-arrow">Detail on request →</div>
+    </a>
+  </div>
+</section>
+</div>
+
+<!-- CASE STUDY 1 -->
+<div class="fw-section">
+<div class="cs-section" id="cs1">
+  <div class="cs-header reveal">
+    <div>
+      <div class="cs-eyebrow" style="color:var(--t1m)">Case study 01 · Regulatory translation · GHG architecture</div>
+      <h2 class="cs-headline">Building ESG infrastructure for first-time CSRD compliance across global operations</h2>
+    </div>
+    <div class="cs-date">Nov 2023 – present · Pac Oceans Solutions</div>
+  </div>
+  <div class="cs-stats reveal">
+    <div class="cs-stat"><span class="cs-stat-val" style="color:var(--t1m)">50+</span><span class="cs-stat-lbl">Suppliers coordinated<br>for Scope 3 data</span></div>
+    <div class="cs-stat"><span class="cs-stat-val" style="color:var(--t2m)">80+</span><span class="cs-stat-lbl">KPIs designed across<br>E/S/G dimensions</span></div>
+    <div class="cs-stat"><span class="cs-stat-val" style="color:var(--t3m)">15+</span><span class="cs-stat-lbl">Material ESG topics<br>identified in DMA</span></div>
+    <div class="cs-stat"><span class="cs-stat-val" style="color:var(--t4m)">4</span><span class="cs-stat-lbl">ESRS topical standards<br>applied</span></div>
+  </div>
+  <div class="cs-body reveal">
+    <div class="cs-main">
+      <div class="cs-section-label">The situation</div>
+      <p class="cs-text">A global maritime operations group preparing for first-time CSRD disclosure. No existing ESG data infrastructure, a Scope 3 footprint distributed across a 50+ supplier network, and a regulatory deadline with external assurance implications. Operations spanning multiple geographies with no unified sustainability data system and no prior reporting framework experience.</p>
+      <div class="cs-section-label">The core problem</div>
+      <p class="cs-text">Most CSRD compliance failures happen not because organisations lack sustainability intent — but because their data infrastructure wasn't designed for audit. The challenge was building a system that could produce defensible outputs in year one and scale reliably in year two, without creating a disclosure programme the organisation couldn't sustain.</p>
+      <div class="cs-callout">
+        <div class="cs-callout-label">Strategic judgment</div>
+        <div class="cs-callout-text">"Designed for assurance from day one — not optimised for first-year completion. A DMA that overscopes creates a disclosure programme no organisation can sustain. Scope was deliberately calibrated to what was strategically significant and what the data could actually support."</div>
+      </div>
+      <div class="cs-section-label">Four-phase delivery</div>
+      <div class="phase-steps">
+        <div class="phase-step"><div class="phase-num-box" style="background:var(--t1l);color:var(--t1)">01</div><div class="phase-content"><div class="phase-name">Diagnostic &amp; gap analysis</div><div class="phase-desc">Data landscape audit, existing policy review, ESRS requirements mapped to current state, compliance readiness heatmap produced per ESRS standard.</div><div class="phase-output">→ Gap analysis report</div></div></div>
+        <div class="phase-step"><div class="phase-num-box" style="background:var(--t2l);color:var(--t2)">02</div><div class="phase-content"><div class="phase-name">Double materiality assessment</div><div class="phase-desc">Stakeholder mapping, dual impact and financial materiality analysis across the value chain, 15+ material ESG topics prioritised and mapped to ESRS topical standards.</div><div class="phase-output">→ DMA report + ESRS disclosure scope</div></div></div>
+        <div class="phase-step"><div class="phase-num-box" style="background:var(--t3l);color:var(--t3)">03</div><div class="phase-content"><div class="phase-name">Data architecture &amp; GHG accounting</div><div class="phase-desc">80+ KPI framework designed across E/S/G dimensions. Scope 1–3 hybrid methodology built — activity-based where data existed, spend-based estimation with documented assumptions for long-tail suppliers. 50+ supplier data collection coordinated.</div><div class="phase-output">→ KPI architecture + Scope 1–3 emissions model</div></div></div>
+        <div class="phase-step"><div class="phase-num-box" style="background:var(--t4l);color:var(--t4)">04</div><div class="phase-content"><div class="phase-name">Governance &amp; disclosure</div><div class="phase-desc">Version-controlled evidence files for every data point, audit trail documentation, annual process design for ongoing operation. Investor-facing CSRD/ESRS-aligned report produced.</div><div class="phase-output">→ CSRD disclosure + governance system</div></div></div>
+      </div>
+
+      <!-- SCOPE 3 DIAGRAM -->
+      <div class="diagram-wrap">
+        <div class="diagram-header">
+          <span class="diagram-title">Scope 3 data collection architecture · three-tier supplier model</span>
+          <span style="font-family:var(--mono);font-size:9px;color:var(--ink3)">GHG Protocol aligned</span>
+        </div>
+        <div class="diagram-body">
+          <svg width="100%" viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg">
+            <!-- Tier labels -->
+            <text x="8" y="78" font-family="'DM Mono',monospace" font-size="9" fill="#8c8a85">TIER 1</text>
+            <text x="8" y="148" font-family="'DM Mono',monospace" font-size="9" fill="#8c8a85">TIER 2</text>
+            <text x="8" y="218" font-family="'DM Mono',monospace" font-size="9" fill="#8c8a85">TAIL</text>
+            <!-- Tier 1 box -->
+            <rect x="56" y="56" width="168" height="44" rx="2" fill="#dff2eb" stroke="#1d9e75" stroke-width="0.5"/>
+            <text x="140" y="73" font-family="'DM Sans',sans-serif" font-size="11" font-weight="500" fill="#0a5c47" text-anchor="middle">Structured data request</text>
+            <text x="140" y="89" font-family="'DM Sans',sans-serif" font-size="10" fill="#4a4845" text-anchor="middle">Activity-based · primary emissions data</text>
+            <!-- Tier 2 box -->
+            <rect x="56" y="126" width="168" height="44" rx="2" fill="#dff2eb" stroke="#1d9e75" stroke-width="0.5"/>
+            <text x="140" y="143" font-family="'DM Sans',sans-serif" font-size="11" font-weight="500" fill="#0a5c47" text-anchor="middle">Simplified questionnaire</text>
+            <text x="140" y="159" font-family="'DM Sans',sans-serif" font-size="10" fill="#4a4845" text-anchor="middle">Spend + activity proxy · verified</text>
+            <!-- Long tail box -->
+            <rect x="56" y="196" width="168" height="44" rx="2" fill="#efede6" stroke="#b8b5ae" stroke-width="0.5"/>
+            <text x="140" y="213" font-family="'DM Sans',sans-serif" font-size="11" font-weight="500" fill="#4a4845" text-anchor="middle">Spend-based estimation</text>
+            <text x="140" y="229" font-family="'DM Sans',sans-serif" font-size="10" fill="#8c8a85" text-anchor="middle">Emission factor model · assumptions logged</text>
+            <!-- Arrows to validation -->
+            <line x1="224" y1="78" x2="296" y2="135" stroke="#1d9e75" stroke-width="1" marker-end="url(#arr1)"/>
+            <line x1="224" y1="148" x2="296" y2="148" stroke="#1d9e75" stroke-width="1" marker-end="url(#arr1)"/>
+            <line x1="224" y1="218" x2="296" y2="161" stroke="#8c8a85" stroke-width="1" marker-end="url(#arr2)"/>
+            <!-- Validation box -->
+            <rect x="298" y="118" width="140" height="60" rx="2" fill="#eceafc" stroke="#5248c4" stroke-width="0.5"/>
+            <text x="368" y="138" font-family="'DM Sans',sans-serif" font-size="11" font-weight="500" fill="#2e2878" text-anchor="middle">Data validation</text>
+            <text x="368" y="152" font-family="'DM Sans',sans-serif" font-size="10" fill="#4a4845" text-anchor="middle">Gap ID · method check</text>
+            <text x="368" y="166" font-family="'DM Sans',sans-serif" font-size="10" fill="#4a4845" text-anchor="middle">Assumption documentation</text>
+            <!-- Arrow to GHG model -->
+            <line x1="438" y1="148" x2="488" y2="148" stroke="#5248c4" stroke-width="1.2" marker-end="url(#arr3)"/>
+            <!-- GHG Model -->
+            <rect x="490" y="122" width="120" height="52" rx="2" fill="#faeae4" stroke="#c44a22" stroke-width="0.5"/>
+            <text x="550" y="143" font-family="'DM Sans',sans-serif" font-size="11" font-weight="500" fill="#6b2410" text-anchor="middle">GHG model</text>
+            <text x="550" y="158" font-family="'DM Sans',sans-serif" font-size="10" fill="#4a4845" text-anchor="middle">Scope 1 · 2 · 3</text>
+            <text x="550" y="169" font-family="'DM Sans',sans-serif" font-size="9" fill="#8c8a85" text-anchor="middle">Audit-ready outputs</text>
+            <!-- Arrow down to disclosure -->
+            <line x1="550" y1="174" x2="550" y2="200" stroke="#c44a22" stroke-width="1" marker-end="url(#arr4)"/>
+            <!-- CSRD Disclosure -->
+            <rect x="490" y="202" width="120" height="38" rx="2" fill="#fdf0dc" stroke="#b06a10" stroke-width="0.5"/>
+            <text x="550" y="218" font-family="'DM Sans',sans-serif" font-size="11" font-weight="500" fill="#5a3200" text-anchor="middle">CSRD disclosure</text>
+            <text x="550" y="232" font-family="'DM Sans',sans-serif" font-size="9" fill="#8c8a85" text-anchor="middle">ESRS E1 · S1 · G1 aligned</text>
+            <!-- Governance dashed box -->
+            <rect x="56" y="248" width="664" height="6" rx="1" fill="none" stroke="#b8b5ae" stroke-width="0.5" stroke-dasharray="4 3"/>
+            <text x="388" y="256" font-family="'DM Mono',monospace" font-size="8" fill="#8c8a85" text-anchor="middle">GOVERNANCE LAYER — version-controlled evidence · audit trail · annual process · assurance packaging</text>
+            <!-- Arrow markers -->
+            <defs>
+              <marker id="arr1" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L7 4L1 7" fill="none" stroke="#1d9e75" stroke-width="1.5" stroke-linecap="round"/></marker>
+              <marker id="arr2" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L7 4L1 7" fill="none" stroke="#8c8a85" stroke-width="1.5" stroke-linecap="round"/></marker>
+              <marker id="arr3" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L7 4L1 7" fill="none" stroke="#5248c4" stroke-width="1.5" stroke-linecap="round"/></marker>
+              <marker id="arr4" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L7 4L1 7" fill="none" stroke="#c44a22" stroke-width="1.5" stroke-linecap="round"/></marker>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="cs-sidebar">
+      <div class="sb-label">Sector</div>
+      <div class="sb-item">Global maritime operations</div>
+      <div class="sb-label">Client type</div>
+      <div class="sb-item">Global ops group, first-time CSRD reporter</div>
+      <div class="sb-label">Duration</div>
+      <div class="sb-item">18+ months, ongoing</div>
+      <div class="sb-label">Frameworks applied</div>
+      <div class="sb-item">CSRD / ESRS</div>
+      <div class="sb-item">GHG Protocol Scope 1–3</div>
+      <div class="sb-item">Double materiality (DMA)</div>
+      <div class="sb-item">GRI reference standards</div>
+      <div class="sb-item">TNFD value chain lens</div>
+      <div class="sb-label">Scale</div>
+      <div class="sb-item">50+ suppliers coordinated</div>
+      <div class="sb-item">80+ KPIs across E/S/G</div>
+      <div class="sb-item">15+ material ESG topics</div>
+      <div class="sb-item">4 ESRS topical standards</div>
+      <div class="sb-label">Evidence available</div>
+      <div class="evidence-list">
+        <div class="ev-item"><div class="ev-icon">↗</div><span>Redacted ESRS gap analysis structure</span></div>
+        <div class="ev-item"><div class="ev-icon">↗</div><span>KPI framework schema (anonymised)</span></div>
+        <div class="ev-item"><div class="ev-icon">↗</div><span>Supplier questionnaire template</span></div>
+        <div class="ev-item"><div class="ev-icon">↗</div><span>Scope 3 methodology note</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CASE STUDY 2 -->
+<div class="fw-section">
+<div class="cs-section" id="cs2">
+  <div class="cs-header reveal">
+    <div>
+      <div class="cs-eyebrow" style="color:var(--t2m)">Case study 02 · Investor-grade ESG intelligence</div>
+      <h2 class="cs-headline">ESG research and engagement at scale: 300+ issuers screened at Amundi Asset Management</h2>
+    </div>
+    <div class="cs-date">May – Nov 2024 · Paris</div>
+  </div>
+  <div class="cs-stats reveal">
+    <div class="cs-stat"><span class="cs-stat-val" style="color:var(--t2m)">300+</span><span class="cs-stat-lbl">Issuers screened for<br>ESG controversy</span></div>
+    <div class="cs-stat"><span class="cs-stat-val" style="color:var(--t2m)">3</span><span class="cs-stat-lbl">Geographies: Europe,<br>Asia, North America</span></div>
+    <div class="cs-stat"><span class="cs-stat-val" style="color:var(--t2m)">6</span><span class="cs-stat-lbl">Months embedded<br>with ESG team</span></div>
+  </div>
+  <div class="cs-body reveal">
+    <div class="cs-main">
+      <div class="cs-section-label">Context</div>
+      <p class="cs-text">Embedded with Amundi Asset Management's ESG research team in Paris. Analysed ESG disclosures of healthcare companies across Europe, Asia, and North America — covering social, human rights, and governance factors — to inform investment assessments. Screened controversies across 300+ issuers, prioritising labour and human rights issues for portfolio oversight. Facilitated stewardship engagements on ESG performance and governance accountability.</p>
+      <div class="cs-section-label">What made it different</div>
+      <p class="cs-text">Buy-side ESG analysis requires a fundamentally different calibration than consulting work. Outputs must be decision-useful to portfolio managers within tight timelines, credible to compliance and stewardship functions, and defensible under external scrutiny. The discipline of producing sector briefings that are concise but complete — and that translate ESG findings into the language of investment risk — is a different skill from building implementation frameworks.</p>
+      <div class="cs-callout" style="background:var(--t2l);border-left-color:var(--t2m)">
+        <div class="cs-callout-label" style="color:var(--t2)">Working principle</div>
+        <div class="cs-callout-text" style="color:var(--t2)">"Buy-side ESG is not about frameworks — it's about materiality to investment thesis. I learned to translate ESG findings into the language of risk, exposure, and portfolio implication that investment teams actually respond to."</div>
+      </div>
+    </div>
+    <div class="cs-sidebar">
+      <div class="sb-label">Organisation</div>
+      <div class="sb-item">Amundi Asset Management</div>
+      <div class="sb-label">Type</div>
+      <div class="sb-item">Buy-side · major European asset manager</div>
+      <div class="sb-label">Scope</div>
+      <div class="sb-item">300+ issuers screened</div>
+      <div class="sb-item">Healthcare sector focus</div>
+      <div class="sb-item">Europe · Asia · North America</div>
+      <div class="sb-label">Themes</div>
+      <div class="sb-item">SFDR</div>
+      <div class="sb-item">Stewardship engagement</div>
+      <div class="sb-item">Labour &amp; human rights</div>
+      <div class="sb-item">Governance accountability</div>
+      <div class="sb-label">NDA note</div>
+      <div class="sb-item">Full case detail available on request for qualified recipients</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CASE STUDY 3 -->
+<div class="fw-section">
+<div class="cs-section" id="cs3">
+  <div class="cs-header reveal">
+    <div>
+      <div class="cs-eyebrow" style="color:var(--t3m)">Case study 03 · Value chain risk · PE advisory</div>
+      <h2 class="cs-headline">Supply chain ESG risk and PE portfolio assessment across agri-food and FMCG</h2>
+    </div>
+    <div class="cs-date">Nov 2023 – present · Argo Advisory</div>
+  </div>
+  <div class="cs-body reveal">
+    <div class="cs-main">
+      <div class="cs-section-label">Context</div>
+      <p class="cs-text">Senior sustainability consultant at Argo Advisory, working with agri-food and FMCG clients to identify and manage material ESG risks across supply chains and business operations. Simultaneously supported PE firms in evaluating portfolio ESG performance — with findings feeding directly into investment decisions and fund-level due diligence processes.</p>
+      <div class="cs-section-label">The work</div>
+      <p class="cs-text">ESG risk assessments applying CSRD, TNFD, and CSDDD frameworks across supply chains. Translated findings into strategic recommendations for client leadership, informing sustainability strategy and operational decision-making. For PE clients: portfolio-level ESG performance evaluation with outputs framed specifically for investment committee and fund-level reporting requirements.</p>
+      <div class="cs-section-label">What made it complex</div>
+      <p class="cs-text">Agri-food supply chains are where ESG risk is most concentrated and least visible. Deforestation, labour rights, water use, and biodiversity exposure are all material but difficult to quantify without primary supplier data. The work required consistent judgment about what level of analysis was decision-useful versus methodologically elegant — and how to communicate complex supply chain risk to leadership audiences who needed to act on it.</p>
+      <div class="cs-callout" style="background:var(--t3l);border-left-color:var(--t3m)">
+        <div class="cs-callout-label" style="color:var(--t3)">Working principle</div>
+        <div class="cs-callout-text" style="color:var(--t3)">"ESG findings that don't connect to investment thesis don't get used. The translation layer — from supply chain risk to portfolio implication — is where the value sits."</div>
+      </div>
+    </div>
+    <div class="cs-sidebar">
+      <div class="sb-label">Organisation</div>
+      <div class="sb-item">Argo Advisory</div>
+      <div class="sb-label">Client sectors</div>
+      <div class="sb-item">Agri-food</div>
+      <div class="sb-item">FMCG</div>
+      <div class="sb-item">Private equity</div>
+      <div class="sb-label">Frameworks</div>
+      <div class="sb-item">CSRD / ESRS</div>
+      <div class="sb-item">TNFD</div>
+      <div class="sb-item">CSDDD</div>
+      <div class="sb-item">GHG Protocol</div>
+      <div class="sb-label">Work type</div>
+      <div class="sb-item">Supply chain ESG risk</div>
+      <div class="sb-item">PE due diligence</div>
+      <div class="sb-item">Fund-level ESG</div>
+      <div class="sb-item">Leadership advisory</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- REGULATORY MATRIX -->
+<div class="fw-section">
+<section id="matrix">
+  <div class="section-label reveal">Regulatory fluency matrix</div>
+  <h2 class="reveal" style="font-family:var(--serif);font-size:clamp(24px,2.8vw,36px);font-weight:400;letter-spacing:-0.02em;margin-bottom:40px;line-height:1.2">Framework depth across the regulatory landscape</h2>
+  <div class="reveal" style="overflow-x:auto">
+  <table class="matrix-table">
+    <thead>
+      <tr>
+        <th style="min-width:160px">Framework</th>
+        <th>Policy interpretation</th>
+        <th>Gap analysis</th>
+        <th>Implementation</th>
+        <th>Reporting</th>
+        <th>Assurance readiness</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>CSRD / ESRS</td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+      </tr>
+      <tr><td>GHG Protocol</td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--t1m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+      </tr>
+      <tr><td>GRI Standards</td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+      </tr>
+      <tr><td>TNFD</td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--t2m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+      </tr>
+      <tr><td>CSDDD</td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+      </tr>
+      <tr><td>SFDR</td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--t3m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+      </tr>
+      <tr><td>UN Global Compact</td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+        <td><div class="dot-row"><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--t4m)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div><div class="mdot" style="background:var(--rule)"></div></div></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+</div>
+
+<!-- CAREER ARC -->
+<div class="fw-section">
+<section id="career">
+  <div class="section-label reveal">Career arc</div>
+  <p class="arc-intro reveal">Not a chronology of roles — a map of capability development. Each engagement advanced a different track.</p>
+  <div class="timeline reveal">
+    <div class="timeline-spine"></div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-org">Education &amp; foundation</div>
+        <div class="tl-role">Mumbai → Lille</div>
+        <p class="tl-desc">BAF from University of Mumbai. EDHEC MiM. Accountancy base plus first ESG framework exposure. Built the financial literacy that underpins all the technical work.</p>
+        <div class="tl-tags"><span class="tl-tag" style="background:var(--t1l);color:var(--t1)">BAF</span><span class="tl-tag" style="background:var(--t1l);color:var(--t1)">EDHEC MiM</span></div>
+      </div>
+      <div class="tl-center"><div class="tl-dot" style="background:var(--t1m)"></div><div class="tl-year">2016–22</div></div>
+      <div class="tl-right"></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"></div>
+      <div class="tl-center"><div class="tl-dot" style="background:var(--t2m)"></div><div class="tl-year">2022–23</div></div>
+      <div class="tl-right">
+        <div class="tl-org">Bretteville Consulting</div>
+        <div class="tl-role">Luxembourg · ESG Consultant</div>
+        <p class="tl-desc">First implementation experience. Climate risk for insurance portfolios, 15+ regulatory requirements mapped to roadmaps across Luxembourg, Belgium &amp; France. Learned to translate regulation into client action.</p>
+        <div class="tl-tags tl-tags-right"><span class="tl-tag" style="background:var(--t2l);color:var(--t2)">Climate risk</span><span class="tl-tag" style="background:var(--t2l);color:var(--t2)">Regulatory mapping</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-org">Apiday</div>
+        <div class="tl-role">Paris · ESG Data Analyst</div>
+        <p class="tl-desc">ESRS standards converted into client-ready CSRD compliance questionnaires for a product launch. 10+ corporate ESG policies drafted. First deep exposure to ESG data architecture and template design.</p>
+        <div class="tl-tags"><span class="tl-tag" style="background:var(--t1l);color:var(--t1)">ESRS</span><span class="tl-tag" style="background:var(--t1l);color:var(--t1)">Product design</span><span class="tl-tag" style="background:var(--t1l);color:var(--t1)">Data architecture</span></div>
+      </div>
+      <div class="tl-center"><div class="tl-dot" style="background:var(--t1m)"></div><div class="tl-year">2023</div></div>
+      <div class="tl-right"></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"></div>
+      <div class="tl-center"><div class="tl-dot" style="background:var(--t3m)"></div><div class="tl-year">2023–24</div></div>
+      <div class="tl-right">
+        <div class="tl-org">EDHEC MSc + Independent consulting</div>
+        <div class="tl-role">Lille / Remote · Lead consultant</div>
+        <p class="tl-desc">MSc Global &amp; Sustainable Business. LCA master project for Qweeko. Simultaneous independent consulting across Pac Oceans, Rebalance, Dutt — first full programme ownership and multi-client management.</p>
+        <div class="tl-tags tl-tags-right"><span class="tl-tag" style="background:var(--t3l);color:var(--t3)">LCA</span><span class="tl-tag" style="background:var(--t3l);color:var(--t3)">Programme ownership</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-org">Amundi Asset Management</div>
+        <div class="tl-role">Paris · ESG Research &amp; Engagement</div>
+        <p class="tl-desc">Buy-side ESG analysis. Embedded with the research team — controversy screening across 300+ issuers, stewardship engagement, sector briefings for investment decisions. Learned the discipline of decision-useful ESG output.</p>
+        <div class="tl-tags"><span class="tl-tag" style="background:var(--t2l);color:var(--t2)">Buy-side</span><span class="tl-tag" style="background:var(--t2l);color:var(--t2)">Stewardship</span><span class="tl-tag" style="background:var(--t2l);color:var(--t2)">300+ issuers</span></div>
+      </div>
+      <div class="tl-center"><div class="tl-dot" style="background:var(--t2m)"></div><div class="tl-year">2024</div></div>
+      <div class="tl-right"></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"></div>
+      <div class="tl-center"><div class="tl-dot" style="background:var(--t4m)"></div><div class="tl-year">2024–25</div></div>
+      <div class="tl-right">
+        <div class="tl-org">Independent ESG Consultant</div>
+        <div class="tl-role">London / Paris · Lead consultant</div>
+        <p class="tl-desc">Full independent practice. Pac Oceans (CSRD programme lead), Argo Advisory (senior consultant), Dutt Consulting (DMA + ESRS). Operating at the intersection of strategy and implementation across multiple concurrent clients.</p>
+        <div class="tl-tags tl-tags-right"><span class="tl-tag" style="background:var(--t4l);color:var(--t4)">CSRD lead</span><span class="tl-tag" style="background:var(--t4l);color:var(--t4)">Multi-client</span><span class="tl-tag" style="background:var(--t4l);color:var(--t4)">Paris-based</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cap-tracks reveal">
+    <div class="cap-track">
+      <div class="ct-line" style="background:var(--t1m)"></div>
+      <div class="ct-title">Technical depth</div>
+      <p class="ct-body">GHG methodology → ESRS implementation → KPI architecture → LCA → assurance readiness. Each engagement added a new layer of technical capability to the foundation.</p>
+    </div>
+    <div class="cap-track">
+      <div class="ct-line" style="background:var(--t2m)"></div>
+      <div class="ct-title">Sector breadth</div>
+      <p class="ct-body">Insurance → ESG software/product → multi-sector consulting → buy-side asset management. Cross-sector pattern recognition is one of the rarest capabilities in ESG practice.</p>
+    </div>
+    <div class="cap-track">
+      <div class="ct-line" style="background:var(--t3m)"></div>
+      <div class="ct-title">Strategic seniority</div>
+      <p class="ct-body">Analyst → delivery support → senior consultant → lead consultant → full programme ownership. The arc from doing the work to designing the systems that do the work.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- CLOSING -->
+<section id="closing">
+  <div class="closing-inner">
+    <div class="closing-left">
+      <h2>Let's build<br>something robust.</h2>
+      <div class="closing-accent"></div>
+      <p class="closing-body">Whether you're navigating a first CSRD disclosure, building a Scope 3 accounting system, or translating ESG obligations into investment-grade intelligence — I work at the implementation layer, not just the strategy layer.</p>
+      <div class="contact-row"><span class="cr-label">Email</span><span class="cr-val">vedika.pandey@edhec.com</span></div>
+      <div class="contact-row"><span class="cr-label">Location</span><span class="cr-val">Paris, France — available remotely</span></div>
+      <div class="contact-row"><span class="cr-label">Languages</span><span class="cr-val">English · French · Hindi · Marathi</span></div>
+      <div class="contact-row"><span class="cr-label">LinkedIn</span><span class="cr-val">linkedin.com/in/vedika-pandey</span></div>
+    </div>
+    <div class="closing-right">
+      <h3>Engagement types</h3>
+      <div class="eng-types">
+        <div class="et"><div class="et-bar" style="background:var(--t1m)"></div><div class="et-name">Advisory</div><div class="et-desc">Strategic ESG planning, materiality assessment, framework selection</div></div>
+        <div class="et"><div class="et-bar" style="background:var(--t2m)"></div><div class="et-name">Implementation</div><div class="et-desc">CSRD compliance, GHG accounting, ESG data architecture</div></div>
+        <div class="et"><div class="et-bar" style="background:var(--t3m)"></div><div class="et-name">Embedded</div><div class="et-desc">In-house ESG analyst or consultant on fixed-term basis</div></div>
+        <div class="et"><div class="et-bar" style="background:var(--t4m)"></div><div class="et-name">Due diligence</div><div class="et-desc">ESG screening and risk assessment for investors and PE</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="closing-footer">
+    <span class="cf-copy">Vedika Pandey · ESG Portfolio 2025</span>
+    <span class="cf-copy">All case studies presented with appropriate confidentiality. Full detail available on request.</span>
+  </div>
+</section>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
